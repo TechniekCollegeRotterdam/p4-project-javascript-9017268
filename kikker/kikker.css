@@ -1,0 +1,15 @@
+body {
+       background-color: rgb(62, 175, 75);
+       display: flex;
+       justify-content: center;
+     }
+     
+     .kikker  {
+       width: 8rem;
+       position: absolute;
+       margin-left: 50px;
+       margin-top: 80px;
+     }
+    .try{
+      justify-content: end;
+    }
