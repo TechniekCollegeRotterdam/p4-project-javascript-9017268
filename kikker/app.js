@@ -1,7 +1,12 @@
+//gebruik comments bij het begin van je code om uit te leggen wat dat stukje doet
+
 setTimeout(function () {
         alert('game tijd voorbij');
         location.reload(true);
 }, 100000);
+
+//goed gebruik van console.log 
+//haal de console.log wel weg zodra je het niet meer nodig hebt
 
 const nameChanged = function (event) {
         console.log(event);
@@ -12,6 +17,7 @@ const kikker = document.querySelector(".kikker");
 
 let px = 0;
 
+//goed gewerkt met addEventListener en het keydown stukje
 
 window.addEventListener("keydown", function (event) {
         console.log(event.key);
@@ -73,3 +79,6 @@ window.addEventListener("keydown", function (event) {
         }
 
 })
+
+//goed om uit te leggen wat de keys doen
+//probeer te zorgen dat je tijdens het spel ook kan zien wat de controls zijn zodat je weet wat je moet doen in de game
