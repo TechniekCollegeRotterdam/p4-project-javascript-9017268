@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-       <meta charset="UTF-8">
-       <meta http-equiv="X-UA-Compatible" content="IE=edge">
-       <meta name="viewport" content="width=device-width, initial-scale=1.0">
-       <title>Kikker</title>
-       <link rel="stylesheet" href="kikker.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="kikker.css">    
 </head>
 
 <body>
-       <canvas id="canvas"></canvas>
-       <label>
-              name:
-              <input type="text" onchange="nameChanged(event)">
-       </label>
-
-       <img src="images/kikker.png" class="kikker" alt="kikker">
-
-       <input type="button" onclick="changeImg()" value="Change">
-
-       <script src="app.js"></script>
-
+    <h1>Snake</h1>
+    
+    <canvas id="game" width="600" height="600">
+    <script src="app.js"></script>
+    <img src="images/kikker.png" alt="kikker" id="kikker" class="kikker">
 </body>
-
 </html>
