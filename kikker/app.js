@@ -13,8 +13,6 @@ let tileCount = 30; //dit is de grootte, was eerst 20
 let tilecount = 200;
 let tileSize = canvas.width / tileCount - 2;
 let tileSizeKikker = canvas.width / tilecount - 2;
-let headX = 10;
-let headY = 10;
 
 let kikkerX = 10;
 let kikkerY = 10;
@@ -47,7 +45,6 @@ function drawGame() {
   }
 
   clearScreen();
-
   checkAppleCollision();
   drawApple();
   drawSnake();
@@ -71,32 +68,18 @@ function isGameOver() {
     return false;
   }
 
-  
-//  if (headX < 0) {
-//    gameOver = true;
-//  } else if (headX === tileCount) {
-//    gameOver = true;
-//  } else if (headY < 0) {
-//    gameOver = true;
-//  } else if (headY === tileCount) {
-//    gameOver = true;
-//   }
+  console.log(kikkerY);
 
-  // //walls
-  if (kikkerX < 0) {
+  if (kikkerX <= 0 || kikkerX > canvas.width) {
+    console.log("dit was de muur lul")
     gameOver = true;
-  } else if (kikkerX === tileCount) {
-    gameOver = true;
-  } else if (kikkerY < 0) {
-    gameOver = true;
-  } else if (kikkerY === tileCount) {
-    gameOver = true;
-  }
+  } else if (kikkerY <= 0 || kikkerY > canvas.height) {
+    gameOver = true; }
 
 
   for (let i = 0; i < snakeParts.length; i++) {
     let part = snakeParts[i];
-    if (part.x === headX && part.y === headY) {
+    if (part.x === kikkerX && part.y === kikkerY) {
       gameOver = true;
       break;
     }
@@ -152,7 +135,7 @@ function drawSnake() {
 
   }
 
-  snakeParts.push(new SnakePart(headX, headY)); //put an item at the end of the list next to the head
+  snakeParts.push(new SnakePart(kikkerX, kikkerY)); //put an item at the end of the list next to the head
   while (snakeParts.length > tailLength) {
     snakeParts.shift(); // remove the furthet item from the snake parts if have more than our tail size.
   }
@@ -164,8 +147,8 @@ function drawSnake() {
 }
 
 function changeSnakePosition() {
-  headX = headX + xVelocity;
-  headY = headY + yVelocity;
+  kikkerX = kikkerX + xVelocity;
+  kikkerY = kikkerY + yVelocity;
 }
 
 function drawApple() {
