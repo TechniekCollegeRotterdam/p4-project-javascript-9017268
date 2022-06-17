@@ -1,10 +1,6 @@
 const canvas = document.getElementById("game");
 const ctx = canvas.getContext("2d");
 
-
-
-
-
 class SnakePart {
   constructor(x, y) {
     this.x = x;
@@ -12,17 +8,18 @@ class SnakePart {
   }
 }
 
-
-
-
-
-
-let speed = 100; //dit is de snelheid , eerst was dit 7
-let tileCount = 200;
+let speed = 200; //dit is de snelheid , eerst was dit 7, dit moet nog veranderen
+let tileCount = 30; //dit is de grootte, was eerst 20
+let tilecount = 200;
 let tileSize = canvas.width / tileCount - 2;
+let tileSizeKikker = canvas.width / tilecount - 2;
 let headX = 10;
 let headY = 10;
-let snakeParts = [];
+
+let kikkerX = 10;
+let kikkerY = 10;
+
+let snakeParts = []; //array met snake parts (oftewel een lijstje)
 let tailLength = 2;
 
 let appleX = 5;
@@ -37,11 +34,6 @@ let yVelocity = 0;
 let score = 0;
 
 //const gulpSound = new Audio("gulp.mp3"); nieuwe audio vinden en erin zetten
-
-
-
-
-
 
 //game loop
 function drawGame() {
@@ -72,12 +64,6 @@ function drawGame() {
   setTimeout(drawGame, 1000 / speed);
 }
 
-
-
-
-
-
-
 function isGameOver() {
   let gameOver = false;
 
@@ -85,17 +71,27 @@ function isGameOver() {
     return false;
   }
 
-  //walls
-  if (headX < 0) {
+  
+//  if (headX < 0) {
+//    gameOver = true;
+//  } else if (headX === tileCount) {
+//    gameOver = true;
+//  } else if (headY < 0) {
+//    gameOver = true;
+//  } else if (headY === tileCount) {
+//    gameOver = true;
+//   }
+
+  // //walls
+  if (kikkerX < 0) {
     gameOver = true;
-  } else if (headX === tileCount) {
+  } else if (kikkerX === tileCount) {
     gameOver = true;
-  } else if (headY < 0) {
+  } else if (kikkerY < 0) {
     gameOver = true;
-  } else if (headY === tileCount) {
+  } else if (kikkerY === tileCount) {
     gameOver = true;
   }
-
 
 
   for (let i = 0; i < snakeParts.length; i++) {
@@ -130,31 +126,16 @@ function isGameOver() {
   return gameOver;
 }
 
-
-
-
-
-
 function drawScore() {
   ctx.fillStyle = "white";
   ctx.font = "10px Verdana";
   ctx.fillText("Score " + score, canvas.width - 50, 10);
 }
 
-
-
-
-
-
 function clearScreen() {
-  ctx.fillStyle = "orange";
+  ctx.fillStyle = "rgb(254, 140, 243)";
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
-
-
-
-
-
 
 function drawSnake() {
   ctx.fillStyle = "green";
@@ -167,6 +148,8 @@ function drawSnake() {
     let partss = part.y;
     //ctx.fillRect(part.x * tileCount, part.y * tileCount, tileSize, tileSize);
     ctx.drawImage(img, parts, partss, tileCount, tileCount);
+    //ctx.drawImage(img);
+
   }
 
   snakeParts.push(new SnakePart(headX, headY)); //put an item at the end of the list next to the head
@@ -175,54 +158,45 @@ function drawSnake() {
   }
 
   //ctx.fillStyle = 'color';
-  //ctx.drawImage(img* tileCount);
-  ctx.fillRect(img, headX * tileCount, headY * tileCount, tileSize, tileSize);
+  //ctx.drawImage(img, 30, 30);
+  ctx.fillRect(kikkerX * img, kikkerY * img, tileSizeKikker, tileSizeKikker);
+  //ctx.fillRect( img, headX * tileCount, headY * tileCount, tileSize, tileSize);
 }
-
-
-
-
-
 
 function changeSnakePosition() {
   headX = headX + xVelocity;
   headY = headY + yVelocity;
 }
 
-
-
-
-
-
 function drawApple() {
+let vlieg = document.getElementById("vlieg");
   ctx.fillStyle = "red";
   ctx.fillRect(appleX * tileCount, appleY * tileCount, tileSize, tileSize);
+  //ctx.fillRect(vlieg, appleX * tileCount, appleY * tileCount, tileSize, tileSize);
+  //ctx.drawImage(vlieg);
 }
 
-
-
-
+//function checkAppleCollision() {
+//  if (appleX === headX && appleY == headY) {
+//    appleX = Math.floor(Math.random() * tileCount);
+//    appleY = Math.floor(Math.random() * tileCount);
+//    tailLength++;
+//    score++;
+    //  gulpSound.play();
+//  }
+//}
 
 function checkAppleCollision() {
-  if (appleX === headX && appleY == headY) {
+  if (appleX === kikkerX && appleY == kikkerY) {
     appleX = Math.floor(Math.random() * tileCount);
     appleY = Math.floor(Math.random() * tileCount);
     tailLength++;
     score++;
-    gulpSound.play();
+    //  gulpSound.play();
   }
 }
 
-
-
-
-
-
 //document.body.addEventListener("keydown", keyDown);
-
-
-
-
 
 
 //function keyDown(event) {

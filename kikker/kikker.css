@@ -5,11 +5,13 @@ body{
        flex-direction: column;
        justify-content: center;
        align-items: center;
+       background-image: url("images/stars.jpg") ;
+       background-size: cover;
    }
    canvas{
-       box-shadow: orange 20px 10px 50px;
+    
+       box-shadow: rgb(254, 140, 243) 20px 10px 50px;
    }
-.kikker{
-       height: 10px;
-       width: 10px;
+h1{
+    color: azure;
 }
