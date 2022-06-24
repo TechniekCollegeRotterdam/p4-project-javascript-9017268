@@ -10,7 +10,7 @@ body{
    }
    canvas{
        
-       box-shadow: rgb(140, 254, 187) 20px 10px 50px;
+       box-shadow: orange 20px 10px 50px;
    }
 h1{
     color: azure;
