@@ -8,6 +8,7 @@ class SnakePart {
   }
 }
 
+
 let speed = 14; //dit is de snelheid , eerst was dit 7, dit moet nog veranderen
 let tileCount = 10; //dit is de grootte
 let pos1 = 10; // voor de random positie vlieg
@@ -38,7 +39,7 @@ let yVelocity = 0;
 
 let score = 0;
 
-const gulpSound = new Audio("sound.mp3");
+const gulpSound = new Audio("sound.mp3");//geluid
 
 //game loop
 function drawGame() {
@@ -58,7 +59,7 @@ function drawGame() {
 
   drawScore();
 
-  if (score > 5) {
+  if (score > 5) {  //als de score hoger is dan 9 zoals hier, dan is de snelheid 10 bijv.
     speed = 10;
   }
   if (score > 10) {
@@ -78,7 +79,7 @@ function isGameOver() {
   //walls
   //eerst had ik canvas.width en canvas.height ,maar toen zag ik dat het met de tailcount te maken had en zo heb ik de code veranderd. 
   //80-5, net niet van de canvas af. Ook het zelfde verhaal met de andere coordinaten.
-  if (kikkerX <= -5 || kikkerX > 75) { //width 800
+  if (kikkerX <= -5 || kikkerX > 75) { //width 800   
     gameOver = true;
   } else if (kikkerY <= -5 || kikkerY > 55) { //height 600
     gameOver = true;
