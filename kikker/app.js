@@ -41,6 +41,7 @@ let score = 0;
 
 const gulpSound = new Audio("sound.mp3");//geluid
 
+
 //game loop
 function drawGame() {
   xVelocity = inputsXVelocity;
